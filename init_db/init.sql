@@ -1,0 +1,11 @@
+CREATE DATABASE wp1;
+CREATE USER 'wp1'@'wp1';
+GRANT ALL PRIVILEGES ON wp1.* TO 'wp1'@'wp1';
+
+CREATE DATABASE wp2;
+CREATE USER 'wp2'@'wp2';
+GRANT ALL PRIVILEGES ON wp2.* TO 'wp2'@'wp2';
+
+CREATE DATABASE proxy;
+CREATE USER 'proxy'@'proxy';
+GRANT ALL PRIVILEGES ON proxy.* TO 'proxy'@'proxy';

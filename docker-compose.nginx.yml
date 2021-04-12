@@ -1,0 +1,30 @@
+version: "3"
+services:
+  proxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: always
+    ports:
+        # Public HTTP Port:
+        - '80:80'
+        # Public HTTPS Port:
+        - '443:443'
+        # Admin Web Port:
+        - '81:81'
+    env_file:
+        - ./env/db_host.env
+        - ./env/managed_nginx.env
+    volumes:
+        - managed_nginx_data:/data
+        - managed_nginx_letsencrypt:/etc/letsencrypt
+    depends_on:
+        - db
+#    secrets:
+#       - managed-nginx-db-password
+
+volumes:
+    managed_nginx_data:
+    managed_nginx_letsencrypt:
+
+#secrets:
+#    managed-nginx-db-password:
+#    file: ./secrets/managed-nginx-db-pw

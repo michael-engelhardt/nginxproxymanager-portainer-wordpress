@@ -1,0 +1,4 @@
+secrets/managed-nginx-db-pw
+secrets/mysql-root-pw
+secrets/wp1-mysql-pw
+secrets/wp2-mysql-pw

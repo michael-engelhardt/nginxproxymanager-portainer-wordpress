@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+    portainer:
+        image: portainer/portainer
+        command: -H unix:///var/run/docker.sock
+        restart: always
+# internal network, we do not need to expose ports here
+#        ports:
+#           - 9000:9000 # UI HTTP
+#           - 8000:8000 # TCP tunnel server
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - portainer_data:/data
+        networks:
+            - internal
+
+volumes:
+    portainer_data:

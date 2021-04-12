@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+    proxy:
+    portainer:
+    wp2:
+    wp1:
+
+    db:
+#       strange init error with mariadb :(
+#        image: mariadb 
+        image: mysql/mysql-server
+        restart: unless-stopped
+        networks:
+            - internal
+        volumes:
+            - db_data:/var/lib/mysql
+            - ./init_db:/docker-entrypoint-initdb.d/
+        env_file:
+            - ./env/db.env
+        secrets:
+            - mysql-root-password
+
+volumes:
+    db_data:
+
+networks:
+    internal:
+
+secrets:
+  mysql-root-password:
+    file: ./secrets/mysql-root-pw
