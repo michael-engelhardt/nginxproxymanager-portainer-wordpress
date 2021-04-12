@@ -4,4 +4,4 @@
 ./generate_secrets.sh
 
 ## Run compose
-./compuse up [-d]
+./compose.sh up [-d]
