@@ -1,0 +1,24 @@
+#
+# https://hub.docker.com/r/portainer/portainer-ce
+# @see https://github.com/jc21/nginx-proxy-manager/tree/master/docs/advanced-config
+#
+# Add portainer as Proxy Host in the Nginx Proxy Manager Frontend:
+# Forward Hostname / IP:  portainer_portainer_1
+# Forward Port:           9000
+#
+# Status: Works
+#
+version: "3"
+services:
+  portainer:
+    image: portainer/portainer
+    privileged: true
+    volumes:
+      - "./data:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    restart: always
+# Proxynetwork
+networks:
+  default:
+    external:
+      name: scoobydoo
