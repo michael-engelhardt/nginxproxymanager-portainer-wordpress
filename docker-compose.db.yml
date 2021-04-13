@@ -1,15 +1,11 @@
 version: "3"
 
 services:
-    proxy:
-    portainer:
-    wp2:
-    wp1:
-
     db:
 #       strange init error with mariadb :(
 #        image: mariadb 
         image: mysql/mysql-server
+        command: mysqld --default-authentication-plugin=mysql_native_password
         restart: unless-stopped
         networks:
             - internal
